@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter App',
+      title: 'Personal Expenses',
       home: new MyHomePage(),
     );
   }
@@ -49,8 +49,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  var scaffoldKey = GlobalKey();
-
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         context: ctx,
@@ -61,31 +59,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        key: scaffoldKey,
-        appBar: AppBar(
-          title: Text("My App"),
-          actions: [
-            IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () => _startAddNewTransaction(context))
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Chart(), TransactionList(_userTransactions)]),
-        ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,
-          onPressed: () => _startAddNewTransaction(context),
-          child: Icon(Icons.add),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Personal Expenses"),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => _startAddNewTransaction(context))
+        ],
       ),
+      body: SingleChildScrollView(
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Chart(), TransactionList(_userTransactions)]),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        onPressed: () => _startAddNewTransaction(context),
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
