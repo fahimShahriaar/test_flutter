@@ -16,6 +16,21 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          accentColor: Colors.purpleAccent,
+          fontFamily: 'Quicksand',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                  titleLarge: TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              )),
+          appBarTheme: AppBarTheme(
+              titleTextStyle: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold))),
       debugShowCheckedModeBanner: false,
       title: 'Personal Expenses',
       home: new MyHomePage(),
@@ -33,8 +48,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // This widget is the root of your application.
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: "1", title: "Laptop", amount: 1000.99, date: DateTime.now()),
+    // Transaction(
+    //     id: "1", title: "Laptop", amount: 1000.99, date: DateTime.now()),
   ];
 
   void _addNewTransaction(String txTitle, txAmount) {
@@ -74,8 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [Chart(), TransactionList(_userTransactions)]),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
+        // backgroundColor: Colors.blue,
+        // foregroundColor: Colors.white,
         onPressed: () => _startAddNewTransaction(context),
         child: Icon(Icons.add),
       ),
